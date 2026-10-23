@@ -1,3 +1,13 @@
+//Source URL: https://wiggledraw.com/how-to-draw-a-coquette-bow/
+//The bow image is free to use from wiggledraw.com
+// @deno-types="./asset-url.d.ts"
+import bowUrl from "./assets/bow.png?no-inline";
+
+//Source URL: https://www.cleanpng.com/png-watercolor-cherry-blossom-corner-frame-trap3m/
+//The frame image is free to use from cleanPNG.com
+// @deno-types="./asset-url.d.ts"
+import frameUrl from "./assets/frame.png?no-inline";
+
 const portrait = document.querySelector<HTMLDivElement>("#portrait")!;
 const spin = document.querySelector<HTMLButtonElement>("#spin")!;
 
@@ -5,7 +15,21 @@ const spin = document.querySelector<HTMLButtonElement>("#spin")!;
 const face = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 face.setAttribute("viewBox", "0 0 200 200");
 face.setAttribute("role", "img");
-face.setAttribute("aria-label", "A neutral face");
+face.setAttribute(
+  "aria-label",
+  "A neutral face with a hair bow and cherry blossom frame",
+);
+
+const frameImage = document.createElementNS(
+  "http://www.w3.org/2000/svg",
+  "image",
+);
+frameImage.setAttribute("href", frameUrl);
+frameImage.setAttribute("x", "0");
+frameImage.setAttribute("y", "0");
+frameImage.setAttribute("width", "200");
+frameImage.setAttribute("height", "200");
+face.append(frameImage);
 
 const head = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
 head.setAttribute("cx", "100");
@@ -58,6 +82,18 @@ mouth.setAttribute("stroke", "#302c29");
 mouth.setAttribute("stroke-width", "4");
 mouth.setAttribute("stroke-linecap", "round");
 face.append(mouth);
+
+const bowImage = document.createElementNS(
+  "http://www.w3.org/2000/svg",
+  "image",
+);
+bowImage.setAttribute("href", bowUrl);
+bowImage.setAttribute("x", "110");
+bowImage.setAttribute("y", "15");
+bowImage.setAttribute("width", "60");
+bowImage.setAttribute("height", "45");
+bowImage.setAttribute("transform", "rotate(20 140 37.5)");
+face.append(bowImage);
 
 portrait.append(face);
 
