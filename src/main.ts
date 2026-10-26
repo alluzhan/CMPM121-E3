@@ -5,7 +5,7 @@ function buildFace() {
   const face = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   face.setAttribute("viewBox", "0 0 200 200");
   face.setAttribute("role", "img");
-  face.setAttribute("aria-label", "A neutral face");
+  face.setAttribute("aria-label", "A smiling face sticking out its tongue");
 
   const head = document.createElementNS(
     "http://www.w3.org/2000/svg",
@@ -52,15 +52,54 @@ function buildFace() {
   nose.setAttribute("stroke-linecap", "round");
   face.append(nose);
 
-  const mouth = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  mouth.setAttribute("x1", "75");
-  mouth.setAttribute("y1", "137");
-  mouth.setAttribute("x2", "125");
-  mouth.setAttribute("y2", "137");
-  mouth.setAttribute("stroke", "#302c29");
-  mouth.setAttribute("stroke-width", "4");
-  mouth.setAttribute("stroke-linecap", "round");
-  face.append(mouth);
+  //tongue gradient
+  const def = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+  const gradient = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "linearGradient",
+  );
+  gradient.setAttribute("id", "tongue-gradient");
+  gradient.setAttribute("x1", "0%");
+  gradient.setAttribute("y1", "0%");
+  gradient.setAttribute("x2", "0%");
+  gradient.setAttribute("y2", "100%");
+
+  const stopTop = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "stop",
+  );
+  stopTop.setAttribute("offset", "0%");
+  stopTop.setAttribute("stop-color", "#c2185b");
+  gradient.append(stopTop);
+
+  const stopBottom = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "stop",
+  );
+  stopBottom.setAttribute("offset", "100%");
+  stopBottom.setAttribute("stop-color", "#ffc2dc");
+  gradient.append(stopBottom);
+
+  def.append(gradient);
+  face.append(def);
+
+  const tongue = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+  tongue.setAttribute("d", "M 90 146 L 90 160 Q 100 176 110 160 L 110 146 Z");
+  tongue.setAttribute("fill", "url(#tongue-gradient)");
+  tongue.setAttribute("stroke", "#302c29");
+  tongue.setAttribute("stroke-width", "3");
+  tongue.setAttribute("stroke-linejoin", "round");
+  face.append(tongue);
+
+  const smile = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+  smile.setAttribute("d", "M 70 130 Q 100 165 130 130");
+  smile.setAttribute("fill", "none");
+  smile.setAttribute("stroke", "#302c29");
+  smile.setAttribute("stroke-width", "4");
+  smile.setAttribute("stroke-linecap", "round");
+  face.append(smile);
 
   return face;
 }
