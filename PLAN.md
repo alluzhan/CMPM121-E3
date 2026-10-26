@@ -1,3 +1,10 @@
+# Chosen Branch
+
+- Branch C was chosen and it changes the face so that it has a smile with it's tongue sticking out.
+- My original criteria for this choice was that I wanted a face that fit a cute and fun character. I think a smiling face with it's tongue out showcases a cute, playful character. The code also only uses shapes instead of imports like branch B. Branch A and B were not chosen because branch A has a star background which is fun, but doesn't fully express cute and fun through the faces features. Branch B adds a cute bow to the face and a cherry blossom frame around it, while this does fit the cute critera it required adding images, and I liked using shapes more for the facial features.
+
+Branches `A` and `B` remain on their own branches.
+
 # Branch A: geometry
 
 **Status: explored on branch `A`.**
